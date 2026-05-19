@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>윤하정 | AI 서비스 기획자 포트폴리오</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-organic: #FAFAFA;     
+            --point-cream: #FFFFFF;   
+            --text-main: #111111;      
+            --text-sub: #555555;       
+            --line-color: #E5E5E5;     
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: var(--bg-organic);
+            color: var(--text-main);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 고정 상단 네비게이션 */
+        .header-nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-landing: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 35px 80px; /* 좌우 여백 확대 */
+        }
+
+        .header-nav .brand-logo {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-sub);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a.active {
+            color: var(--text-main);
+            font-weight: 700;
+            border-bottom: 2px solid var(--text-main);
+            padding-bottom: 4px;
+        }
+
+        /* [구조 개편] 2분할 컨테이너 안정화 */
+        .main-container {
+            display: flex;
+            width: 100%;
+            height: 100vh;
+            padding-top: 120px; /* 네비게이션 아래 여백 충분히 확보 */
+        }
+
+        /* [가독성 핵심] 왼쪽 글씨 영역 분배 조정 (여백과 정렬 다듬음) */
+        .left-content {
+            width: 50%; /* 비율을 50%로 평평하게 맞춰 시각적 안정감 부여 */
+            height: 100%;
+            padding: 40px 60px 60px 80px; /* 왼쪽 여백 늘려 시선 유도 */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; 
+        }
+
+        /* [가독성 핵심] 타이틀의 폰트 스케일 및 줄바꿈 전면 수정 */
+        .section-intro-title {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 3rem; /* 크기를 키워 텍스트의 굵직한 존재감 명시 */
+            font-weight: 300;
+            line-height: 1.5; /* 행간을 넓혀 가독성 확보 */
+            letter-spacing: -1px; /* 자간을 조여 단단한 느낌 부여 */
+            word-break: keep-all; /* 단어 단위로 깔끔하게 떨어지게 설정 */
+            overflow-wrap: break-word;
+            margin-bottom: 30px;
+        }
+
+        .section-intro-title strong {
+            font-weight: 700;
+            border-bottom: 3px solid var(--text-main);
+            padding-bottom: 2px;
+        }
+
+        /* [가독성 핵심] 설명 본문 글씨 크기 및 가독성 업그레이드 */
+        .landing-desc {
+            font-size: 1.1rem;
+            color: var(--text-sub);
+            max-width: 580px;
+            line-height: 1.85; /* 본문 행간 대폭 확대 */
+            word-break: keep-all;
+            overflow-wrap: break-word;
+        }
+
+        /* 하단 역량 영역 정돈 */
+        .skills-section {
+            margin-top: auto;
+            padding-bottom: 40px;
+        }
+
+        .sub-title {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+            color: #888;
+        }
+
+        .core-skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .skill-item {
+            background-color: var(--point-cream);
+            border: 1px solid var(--line-color);
+            padding: 25px 20px;
+            border-radius: 0px;
+        }
+
+        .skill-item h3 {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 1.05rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .skill-item p {
+            font-size: 0.88rem;
+            color: var(--text-sub);
+            line-height: 1.5;
+            word-break: keep-all;
+        }
+
+        /* 오른쪽 이미지 영역 */
+        .right-image-zone {
+            width: 50%;
+            height: 100%;
+            padding: 0 80px 80px 20px; /* 좌측 여백을 좁히고 전체 밸런스 유지 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-banner-frame {
+            width: 100%;
+            height: 100%; /* 우측 프레임을 시원하게 채움 */
+            background-image: url('media/back.jpeg'); /* ◀ 경로를 구조에 맞게 media/ 폴더 안으로 수정했습니다 */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border: 1px solid var(--line-color);
+        }
+
+        /* 반응형 모바일 대책 */
+        @media (max-width: 1024px) {
+            html, body { overflow: auto; height: auto; }
+            .main-container { flex-direction: column; height: auto; padding-top: 100px; }
+            .left-content { width: 100%; height: auto; padding: 40px 30px; }
+            .right-image-zone { width: 100%; height: 450px; padding: 30px; }
+            .core-skills-grid { grid-template-columns: 1fr; }
+            .section-intro-title { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="header-nav">
+        <div class="brand-logo">YOON HA JUNG</div>
+        <ul class="nav-links">
+            <li><a href="landing.html" class="active">홈 / 랜딩</a></li>
+            <li><a href="resume.html">이력서</a></li>
+            <li><a href="portfolio.html">포트폴리오</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-container">
+        
+        <section class="left-content">
+            <div>
+                <h1 class="section-intro-title">
+                    인간 중심의 시각과<br>
+                    AI 기술을 잇는 준비된<br>
+                    AI 서비스 기획자,<br>
+                    <strong>윤하정</strong>입니다.
+                </h1>
+                
+                <p class="landing-desc">
+                    아동학을 전공하며 인간에 대한 깊은 이해를 배웠고, 현재는 AI 스타트업 학과 석사 과정 및 다양한 AI/백엔드 교육을 통해 기술적 역량을 탄탄히 다지고 있습니다. 공공기관에서의 실무 경험을 바탕으로, 사용자의 문제를 날카롭게 정의하고 기술로 해결하는 AI 기획자로 성장하고자 합니다.
+                </p>
+            </div>
+
+            <div class="skills-section">
+                <h2 class="sub-title">Core Skills</h2>
+                <div class="core-skills-grid">
+                    <div class="skill-item">
+                        <h3>AI / Data</h3>
+                        <p>AI 서비스 기획, 데이터 모델링 기초</p>
+                    </div>
+                    <div class="skill-item">
+                        <h3>Development</h3>
+                        <p>백엔드 아키텍처 이해, DB 기초</p>
+                    </div>
+                    <div class="skill-item">
+                        <h3>Business</h3>
+                        <p>실무 협업 및 리서치 인사이트</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="right-image-zone">
+            <div class="hero-banner-frame"></div>
+        </section>
+
+    </main>
+
+</body>
+</html>
